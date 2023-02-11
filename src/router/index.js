@@ -26,6 +26,11 @@ const routes = [
         path: '/panama',
         name: 'Panama',
         component: () => import('@/views/Panama.vue')
+    },
+    {
+        path:'/destination/:id',
+        component:()=>import('@/views/DestinationShow.vue'),
+        // props:true  // can use passing props
     }
 ];
 const router = createRouter({
