@@ -11,7 +11,14 @@ const routes = [
         path:'/destination/:id/:slug',
         name: 'destination.show',
         component:()=>import('@/views/DestinationShow.vue'),
-         props:true  // can use passing props
+        props: route => ({id : parseInt(route.params.id)})  // can use passing props
+    },
+    {
+        path:'/destination/:id/:slug/:experienceSlug',
+        name: 'experience.show',
+        component:()=>import('@/views/ExperienceShow.vue'),
+        props: route => ({...route.params,id : parseInt(route.params.id)}) 
+
     }
 ];
 const router = createRouter({
