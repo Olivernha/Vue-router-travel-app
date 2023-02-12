@@ -11,7 +11,7 @@ const routes = [
         path:'/destination/:id/:slug',
         name: 'destination.show',
         component:()=>import('@/views/DestinationShow.vue'),
-        // props:true  // can use passing props
+         props:true  // can use passing props
     }
 ];
 const router = createRouter({
