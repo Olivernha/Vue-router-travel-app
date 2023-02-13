@@ -1,4 +1,4 @@
-import {createRouter, createWebHistory} from "vue-router";
+import { createRouter, createWebHistory } from "vue-router";
 import Home from "@/views/Home.vue";
 
 const routes = [
@@ -8,21 +8,26 @@ const routes = [
         component: Home,
     },
     {
-        path:'/destination/:id/:slug',
+        path: '/destination/:id/:slug',
         name: 'destination.show',
-        component:()=>import('@/views/DestinationShow.vue'),
-        props: route => ({id : parseInt(route.params.id)}),
-        children:[
+        component: () => import('@/views/DestinationShow.vue'),
+        props: route => ({ id: parseInt(route.params.id) }),
+        children: [
             {
-                path:':experienceSlug',
+                path: ':experienceSlug',
                 name: 'experience.show',
-                component:()=>import('@/views/ExperienceShow.vue'),
-                props: route => ({...route.params,id : parseInt(route.params.id)}) 
-        
+                component: () => import('@/views/ExperienceShow.vue'),
+                props: route => ({ ...route.params, id: parseInt(route.params.id) })
+
             }
         ]
     },
-   
+    {
+        path: '/:pathMatch(.*)*',
+        name: 'NotFound',
+        component: () => import('@/views/NotFound.vue')
+    }
+
 ];
 const router = createRouter({
     history: createWebHistory(),
