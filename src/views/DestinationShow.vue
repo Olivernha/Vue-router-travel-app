@@ -1,8 +1,8 @@
 <template>
   <section v-if="destination">
     <h1>{{ destination.name }}</h1>
+    <GoBack />
     <div class="destination-details">
-
       <img :src="`/images/${destination.image}`" :alt="destination.name">
       <p>{{ destination.description }}</p>
     </div>
@@ -23,10 +23,13 @@
 <script>
 import sourceData from '../data.json'
 import ExperienceCard from '@/components/ExperienceCard.vue';
+import GoBack from '@/components/GoBack.vue';
 export default {
   name: "DestinationShow",
   components: {
-    ExperienceCard
+    ExperienceCard,
+    GoBack,
+    GoBack
   },
   // data(){
   //   return {
