@@ -39,5 +39,10 @@ const router = createRouter({
     history: createWebHistory(),
     routes,
     // linkActiveClass:'vue-school-active-link'
+    scrollBehavior (to, from, savedPosition) {
+        return savedPosition || new Promise((resolve)=>{
+          setTimeout(()=> resolve({ top:0 , behavior: 'smooth' }), 300)
+        })
+      }
 });
 export default router;
