@@ -8,6 +8,19 @@ const routes = [
         component: Home,
     },
     {
+        path: '/login',
+        name: 'login',
+        component: () => import('@/views/Login.vue')
+    },
+    {
+        path: '/protected',
+        name: 'protected',
+        component: () => import('@/views/Protected.vue'),
+        meta: {
+            requiresAuth: true
+        }
+    },
+    {
         path: '/destination/:id/:slug',
         name: 'destination.show',
         component: () => import('@/views/DestinationShow.vue'),
@@ -39,10 +52,16 @@ const router = createRouter({
     history: createWebHistory(),
     routes,
     // linkActiveClass:'vue-school-active-link'
-    scrollBehavior (to, from, savedPosition) {
-        return savedPosition || new Promise((resolve)=>{
-          setTimeout(()=> resolve({ top:0 , behavior: 'smooth' }), 300)
+    scrollBehavior(to, from, savedPosition) {
+        return savedPosition || new Promise((resolve) => {
+            setTimeout(() => resolve({ top: 0, behavior: 'smooth' }), 300)
         })
-      }
+    }
 });
+router.beforeEach((to, from) => {
+    if (to.meta.requiresAuth && !window.user) {
+        return { name: 'login' }
+    }
+})
+
 export default router;
