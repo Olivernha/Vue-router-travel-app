@@ -6,6 +6,7 @@ const routes = [
         path: "/",
         name: "Home",
         component: Home,
+        alias: '/home'
     },
     {
         path: '/login',
