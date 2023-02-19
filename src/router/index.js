@@ -36,6 +36,10 @@ const routes = [
         }
     },
     {
+        path: "/example/\\d+:id()?",
+        component: () => import("@/views/Login.vue")
+      },
+    {
         path: '/destination/:id/:slug',
         name: 'destination.show',
         component: () => import('@/views/DestinationShow.vue'),
